@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 import time
 import LCDLIB16x2 as LCD
 
