@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-import LCDLIB16x2 as LCD
+import LCDLIB16X2 as LCD
 
 # Initialise display
 LCD.lcd_init()
