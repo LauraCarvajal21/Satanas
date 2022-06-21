@@ -11,6 +11,7 @@ LCD.lcd_init()
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(BOTON_SUBIR, GPIO.IN)
 GPIO.setup(BOTON_BAJAR, GPIO.IN)
+GPIO.setup(BOTON_ENTER, GPIO.IN)
 GPIO.setwarnings(False)
 
 velocidad = 20
