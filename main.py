@@ -5,7 +5,7 @@ import LCDLIB16X2 as LCD
 # Initialise display
 BOTON_SUBIR = 14
 BOTON_BAJAR = 4
-BOTON_ENTER = 5
+BOTON_ENTER = 25
 
 LCD.lcd_init()
 GPIO.setmode(GPIO.BCM)
