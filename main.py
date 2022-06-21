@@ -7,7 +7,7 @@ BOTON_SUBIR = 14
 BOTON_BAJAR = 4
 
 LCD.lcd_init()
-GPIO.setup(GPIO.BCM)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(BOTON_SUBIR, GPIO.IN)
 GPIO.setup(BOTON_BAJAR, GPIO.IN)
 
