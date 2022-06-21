@@ -3,20 +3,43 @@ import time
 import LCDLIB16X2 as LCD
 
 # Initialise display
+BOTON_SUBIR = 14
+BOTON_BAJAR = 4
+
 LCD.lcd_init()
+GPIO.setup(GPIO.BCM)
+GPIO.setup(BOTON_SUBIR, GPIO.IN)
+GPIO.setup(BOTON_BAJAR, GPIO.IN)
 
-while True:
 
-    # Send some test
-    LCD.lcd_string(" Rasbperry Pi ", LCD.LINE_1)
-    LCD.lcd_string(" Hola bebe ", LCD.LINE_2)
+def main():
+    corriendo = True
+    velodicad = 0
+    sentido = 0
+    vueltas = 0
 
-    time.sleep(3)  # 3 second delay
+    bandera_posicion = 0
 
-    # Send some text
-    LCD.lcd_string("PWM", LCD.LINE_1)
-    LCD.lcd_string("#VUELTAS", LCD.LINE_2)
+    while corriendo:
+        subir = GPIO.input(BOTON_SUBIR)
+        bajar = GPIO.input(BOTON_BAJAR)
 
-    time.sleep(3)  # 3 second delay
+        if subir == True and bandera_posicion<=2:
+            bandera_posicion+=1
+        elif bajar == True and bandera_posicion>=0:
+            bandera_posicion-=1
+        # Mi menu
+        if bandera_posicion == 0:
+            LCD.lcd_string("Velocidad      *", LCD.LINE_1)
+            LCD.lcd_string("Sentido", LCD.LINE_2)
+        elif bandera_posicion == 1:
+            LCD.lcd_string("Velocidad ", LCD.LINE_1)
+            LCD.lcd_string("Sentido        *", LCD.LINE_2)
+        elif bandera_posicion == 2:
+            LCD.lcd_string("Sentido", LCD.LINE_1)
+            LCD.lcd_string("Vueltas        *", LCD.LINE_2)
 
-GPIO.cleanup()
+    GPIO.cleanup()
+
+
+main()
